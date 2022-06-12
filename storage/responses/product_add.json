@@ -1,0 +1,24 @@
+{
+    "data": {
+        "id": 15,
+        "name": "Laptop",
+        "short_desription": "krótki opis",
+        "long_desription": "długi opis",
+        "price": [
+            {
+                "netto": 1290,
+                "gross": 1587,
+                "tax": 23,
+                "description": null,
+                "condition": 1
+            }
+        ],
+        "category": [
+            {
+                "id": 2,
+                "name": "Lobster; I heard him declare, \"You have baked me.",
+                "available": 1
+            }
+        ]
+    }
+}

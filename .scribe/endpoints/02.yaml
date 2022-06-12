@@ -1,0 +1,172 @@
+name: Product
+description: |-
+
+  APIs for managing products
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/products
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/product
+    metadata:
+      title: 'Add new product'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: accusantium
+        type: string
+        custom: []
+      short_description:
+        name: short_description
+        description: ''
+        required: true
+        example: ut
+        type: string
+        custom: []
+      long_description:
+        name: long_description
+        description: ''
+        required: true
+        example: eligendi
+        type: string
+        custom: []
+      netto_price:
+        name: netto_price
+        description: ''
+        required: true
+        example: 0.13420087
+        type: number
+        custom: []
+      tax:
+        name: tax
+        description: ''
+        required: true
+        example: 6
+        type: integer
+        custom: []
+      condition:
+        name: condition
+        description: ''
+        required: false
+        example: 9
+        type: integer
+        custom: []
+      category_id:
+        name: category_id
+        description: ''
+        required: false
+        example: 5
+        type: integer
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": {\r\n        \"id\": 15,\r\n        \"name\": \"Laptop\",\r\n        \"short_desription\": \"krótki opis\",\r\n        \"long_desription\": \"długi opis\",\r\n        \"price\": [\r\n            {\r\n                \"netto\": 1290,\r\n                \"gross\": 1587,\r\n                \"tax\": 23,\r\n                \"description\": null,\r\n                \"condition\": 1\r\n            }\r\n        ],\r\n        \"category\": [\r\n            {\r\n                \"id\": 2,\r\n                \"name\": \"Lobster; I heard him declare, \\\"You have baked me.\",\r\n                \"available\": 1\r\n            }\r\n        ]\r\n    }\r\n}"
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: api/product
+    metadata:
+      title: 'Delete product'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      product_id:
+        name: product_id
+        description: ''
+        required: true
+        example: 5
+        type: integer
+        custom: []
+    responses:
+      -
+        status: 200
+        content: '{"message": "product deleted"}'
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: api/product
+    metadata:
+      title: 'Update product'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      id:
+        name: id
+        description: ''
+        required: true
+        example: 2
+        type: integer
+        custom: []
+      name:
+        name: name
+        description: ''
+        required: true
+        example: magni
+        type: string
+        custom: []
+      short_description:
+        name: short_description
+        description: ''
+        required: true
+        example: id
+        type: string
+        custom: []
+      long_description:
+        name: long_description
+        description: ''
+        required: true
+        example: omnis
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": {\r\n        \"id\": 15,\r\n        \"name\": \"Laptop\",\r\n        \"short_desription\": \"krótki opis\",\r\n        \"long_desription\": \"długi opis\",\r\n        \"price\": [\r\n            {\r\n                \"netto\": 1290,\r\n                \"gross\": 1587,\r\n                \"tax\": 23,\r\n                \"description\": null,\r\n                \"condition\": 1\r\n            }\r\n        ],\r\n        \"category\": [\r\n            {\r\n                \"id\": 2,\r\n                \"name\": \"Lobster; I heard him declare, \\\"You have baked me.\",\r\n                \"available\": 1\r\n            }\r\n        ]\r\n    }\r\n}"
+        headers: []
+        description: '200'
+    responseFields: []

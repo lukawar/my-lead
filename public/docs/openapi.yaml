@@ -1,0 +1,413 @@
+openapi: 3.0.3
+info:
+  title: MyLead
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'https://127.0.0.1:8000'
+paths:
+  /api/login:
+    post:
+      summary: Login
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  token: token
+                properties:
+                  token:
+                    type: string
+                    example: token
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: gleichner.judd@example.net
+                password:
+                  type: string
+                  description: 'Must be at least 6 characters.'
+                  example: ko
+              required:
+                - email
+                - password
+      security: []
+  /api/register:
+    post:
+      summary: Register
+      description: 'Register new user account'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: sint
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: ahmad.dare@example.org
+                password:
+                  type: string
+                  description: ''
+                  example: voluptatem
+              required:
+                - name
+                - email
+                - password
+      security: []
+  /api/add/category:
+    post:
+      summary: 'Add new category'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Category
+      security: []
+  /api/products:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Product
+      security: []
+  /api/product:
+    post:
+      summary: 'Add new product'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 15
+                    name: Laptop
+                    short_desription: 'krótki opis'
+                    long_desription: 'długi opis'
+                    price:
+                      -
+                        netto: 1290
+                        gross: 1587
+                        tax: 23
+                        description: null
+                        condition: 1
+                    category:
+                      -
+                        id: 2
+                        name: 'Lobster; I heard him declare, "You have baked me.'
+                        available: 1
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 15
+                      name: Laptop
+                      short_desription: 'krótki opis'
+                      long_desription: 'długi opis'
+                      price:
+                        -
+                          netto: 1290
+                          gross: 1587
+                          tax: 23
+                          description: null
+                          condition: 1
+                      category:
+                        -
+                          id: 2
+                          name: 'Lobster; I heard him declare, "You have baked me.'
+                          available: 1
+      tags:
+        - Product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: accusantium
+                short_description:
+                  type: string
+                  description: ''
+                  example: ut
+                long_description:
+                  type: string
+                  description: ''
+                  example: eligendi
+                netto_price:
+                  type: number
+                  description: ''
+                  example: 0.13420087
+                tax:
+                  type: integer
+                  description: ''
+                  example: 6
+                condition:
+                  type: integer
+                  description: ''
+                  example: 9
+                category_id:
+                  type: integer
+                  description: ''
+                  example: 5
+              required:
+                - name
+                - short_description
+                - long_description
+                - netto_price
+                - tax
+      security: []
+    delete:
+      summary: 'Delete product'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'product deleted'
+                properties:
+                  message:
+                    type: string
+                    example: 'product deleted'
+      tags:
+        - Product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: integer
+                  description: ''
+                  example: 5
+              required:
+                - product_id
+      security: []
+    put:
+      summary: 'Update product'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 15
+                    name: Laptop
+                    short_desription: 'krótki opis'
+                    long_desription: 'długi opis'
+                    price:
+                      -
+                        netto: 1290
+                        gross: 1587
+                        tax: 23
+                        description: null
+                        condition: 1
+                    category:
+                      -
+                        id: 2
+                        name: 'Lobster; I heard him declare, "You have baked me.'
+                        available: 1
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 15
+                      name: Laptop
+                      short_desription: 'krótki opis'
+                      long_desription: 'długi opis'
+                      price:
+                        -
+                          netto: 1290
+                          gross: 1587
+                          tax: 23
+                          description: null
+                          condition: 1
+                      category:
+                        -
+                          id: 2
+                          name: 'Lobster; I heard him declare, "You have baked me.'
+                          available: 1
+      tags:
+        - Product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ''
+                  example: 2
+                name:
+                  type: string
+                  description: ''
+                  example: magni
+                short_description:
+                  type: string
+                  description: ''
+                  example: id
+                long_description:
+                  type: string
+                  description: ''
+                  example: omnis
+              required:
+                - id
+                - name
+                - short_description
+                - long_description
+      security: []
+tags:
+  -
+    name: Auth
+    description: "\nAPIs for auth"
+  -
+    name: Category
+    description: "\nAPIs for managing categories"
+  -
+    name: Product
+    description: "\nAPIs for managing products"

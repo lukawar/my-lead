@@ -1,0 +1,22 @@
+name: Category
+description: |-
+
+  APIs for managing categories
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/add/category
+    metadata:
+      title: 'Add new category'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []

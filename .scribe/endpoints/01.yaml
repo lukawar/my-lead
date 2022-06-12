@@ -17,6 +17,20 @@ endpoints:
       Accept: application/json
     urlParameters: []
     queryParameters: []
-    bodyParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: itaque
+        type: string
+        custom: []
+      available:
+        name: available
+        description: ''
+        required: true
+        example: false
+        type: boolean
+        custom: []
     responses: []
     responseFields: []

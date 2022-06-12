@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
 Route::post('register', [App\Http\Controllers\AuthController::class, 'register']);
 
-Route::post('products', [App\Http\Controllers\ProductController::class, 'index']);
+Route::get('product', [App\Http\Controllers\ProductController::class, 'index']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     //category

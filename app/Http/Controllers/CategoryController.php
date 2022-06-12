@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CategoryAddRequest;
+use App\Http\Requests\Category\CategoryAddRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class CategoryController extends Controller
      * @param Category $category
      * @return CategoryResource
      */
-    public function add(CategoryAddRequest $request)
+    public function add(CategoryAddRequest $request) :CategoryResource
     {
         $category = Category::create($request->validated());
 

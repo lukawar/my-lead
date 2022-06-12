@@ -19,10 +19,18 @@ use Illuminate\Http\Response;
  */
 class ProductController extends Controller
 {
-    public function index()
+    /**
+     * list products
+     *
+     * @return ProductCollection
+     * @urlParam orderDesc string order by col name
+     * @urlParam orderAsc string order by col name
+     * @responseFile responses/product_list.json
+     */
+    public function index(Request $request, ProductService $product) :ProductCollection
     {
-        $products = Product::with(['price'])->get();
-        return new ProductCollection($products);
+        $products = $product->index($request);
+        return new ProductCollection($products->paginate());
     }
 
     /**
@@ -59,7 +67,7 @@ class ProductController extends Controller
      * @return ProductResource
      * @response {"message": "product deleted"}
      */
-    public function delete(ProductDelRequest $request)
+    public function delete(ProductDelRequest $request) :response
     {
         $data = $request->validated();
 

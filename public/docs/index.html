@@ -97,10 +97,7 @@
                     <a href="#product">Product</a>
                 </li>
                                     <ul id="tocify-subheader-product" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="product-POSTapi-products">
-                        <a href="#product-POSTapi-products">POST api/products</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="product-POSTapi-product">
+                                                    <li class="tocify-item level-2" data-unique="product-POSTapi-product">
                         <a href="#product-POSTapi-product">Add new product</a>
                     </li>
                                     <li class="tocify-item level-2" data-unique="product-DELETEapi-product">
@@ -108,6 +105,9 @@
                     </li>
                                     <li class="tocify-item level-2" data-unique="product-PUTapi-product">
                         <a href="#product-PUTapi-product">Update product</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="product-GETapi-product">
+                        <a href="#product-GETapi-product">list products</a>
                     </li>
                                                     </ul>
                             </ul>
@@ -161,8 +161,8 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"gleichner.judd@example.net\",
-    \"password\": \"ko\"
+    \"email\": \"murazik.laury@example.com\",
+    \"password\": \"p\"
 }"
 </code></pre></div>
 
@@ -178,8 +178,8 @@ const headers = {
 };
 
 let body = {
-    "email": "gleichner.judd@example.net",
-    "password": "ko"
+    "email": "murazik.laury@example.com",
+    "password": "p"
 };
 
 fetch(url, {
@@ -246,7 +246,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-login"
-               value="gleichner.judd@example.net"
+               value="murazik.laury@example.com"
                data-component="body" hidden>
     <br>
 <p>Must be a valid email address.</p>
@@ -256,7 +256,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-login"
-               value="ko"
+               value="p"
                data-component="body" hidden>
     <br>
 <p>Must be at least 6 characters.</p>
@@ -280,9 +280,9 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"sint\",
-    \"email\": \"ahmad.dare@example.org\",
-    \"password\": \"voluptatem\"
+    \"name\": \"et\",
+    \"email\": \"antonetta31@example.com\",
+    \"password\": \"architecto\"
 }"
 </code></pre></div>
 
@@ -298,9 +298,9 @@ const headers = {
 };
 
 let body = {
-    "name": "sint",
-    "email": "ahmad.dare@example.org",
-    "password": "voluptatem"
+    "name": "et",
+    "email": "antonetta31@example.com",
+    "password": "architecto"
 };
 
 fetch(url, {
@@ -358,7 +358,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-register"
-               value="sint"
+               value="et"
                data-component="body" hidden>
     <br>
 
@@ -368,7 +368,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-register"
-               value="ahmad.dare@example.org"
+               value="antonetta31@example.com"
                data-component="body" hidden>
     <br>
 <p>Must be a valid email address.</p>
@@ -378,7 +378,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-register"
-               value="voluptatem"
+               value="architecto"
                data-component="body" hidden>
     <br>
 
@@ -404,7 +404,12 @@ fetch(url, {
     <pre><code class="language-bash">curl --request POST \
     "https://127.0.0.1:8000/api/add/category" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"itaque\",
+    \"available\": false
+}"
+</code></pre></div>
 
 
 <div class="javascript-example">
@@ -417,9 +422,15 @@ const headers = {
     "Accept": "application/json",
 };
 
+let body = {
+    "name": "itaque",
+    "available": false
+};
+
 fetch(url, {
     method: "POST",
     headers,
+    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -465,89 +476,43 @@ fetch(url, {
             <small class="badge badge-black">POST</small>
             <b><code>api/add/category</code></b>
         </p>
-                    </form>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="POSTapi-add-category"
+               value="itaque"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>available</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+                <label data-endpoint="POSTapi-add-category" hidden>
+            <input type="radio" name="available"
+                   value="true"
+                   data-endpoint="POSTapi-add-category"
+                   data-component="body"
+            >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-add-category" hidden>
+            <input type="radio" name="available"
+                   value="false"
+                   data-endpoint="POSTapi-add-category"
+                   data-component="body"
+            >
+            <code>false</code>
+        </label>
+    <br>
+
+        </p>
+        </form>
 
         <h1 id="product">Product</h1>
 
     <p>APIs for managing products</p>
-
-            <h2 id="product-POSTapi-products">POST api/products</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-POSTapi-products">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "https://127.0.0.1:8000/api/products" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "https://127.0.0.1:8000/api/products"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-products">
-</span>
-<span id="execution-results-POSTapi-products" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-products"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-products"></code></pre>
-</span>
-<span id="execution-error-POSTapi-products" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-products"></code></pre>
-</span>
-<form id="form-POSTapi-products" data-method="POST"
-      data-path="api/products"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-products', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-products"
-                    onclick="tryItOut('POSTapi-products');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-products"
-                    onclick="cancelTryOut('POSTapi-products');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-products" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/products</code></b>
-        </p>
-                    </form>
 
             <h2 id="product-POSTapi-product">Add new product</h2>
 
@@ -566,13 +531,13 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"accusantium\",
-    \"short_description\": \"ut\",
-    \"long_description\": \"eligendi\",
-    \"netto_price\": 0.13420087,
-    \"tax\": 6,
-    \"condition\": 9,
-    \"category_id\": 5
+    \"name\": \"quas\",
+    \"short_description\": \"dolores\",
+    \"long_description\": \"minima\",
+    \"netto_price\": 2693.635624,
+    \"tax\": 18,
+    \"condition\": 10,
+    \"category_id\": 8
 }"
 </code></pre></div>
 
@@ -588,13 +553,13 @@ const headers = {
 };
 
 let body = {
-    "name": "accusantium",
-    "short_description": "ut",
-    "long_description": "eligendi",
-    "netto_price": 0.13420087,
-    "tax": 6,
-    "condition": 9,
-    "category_id": 5
+    "name": "quas",
+    "short_description": "dolores",
+    "long_description": "minima",
+    "netto_price": 2693.635624,
+    "tax": 18,
+    "condition": 10,
+    "category_id": 8
 };
 
 fetch(url, {
@@ -682,7 +647,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-product"
-               value="accusantium"
+               value="quas"
                data-component="body" hidden>
     <br>
 
@@ -692,7 +657,7 @@ fetch(url, {
                 <input type="text"
                name="short_description"
                data-endpoint="POSTapi-product"
-               value="ut"
+               value="dolores"
                data-component="body" hidden>
     <br>
 
@@ -702,7 +667,7 @@ fetch(url, {
                 <input type="text"
                name="long_description"
                data-endpoint="POSTapi-product"
-               value="eligendi"
+               value="minima"
                data-component="body" hidden>
     <br>
 
@@ -712,7 +677,7 @@ fetch(url, {
                 <input type="number"
                name="netto_price"
                data-endpoint="POSTapi-product"
-               value="0.13420087"
+               value="2693.635624"
                data-component="body" hidden>
     <br>
 
@@ -722,7 +687,7 @@ fetch(url, {
                 <input type="number"
                name="tax"
                data-endpoint="POSTapi-product"
-               value="6"
+               value="18"
                data-component="body" hidden>
     <br>
 
@@ -732,7 +697,7 @@ fetch(url, {
                 <input type="number"
                name="condition"
                data-endpoint="POSTapi-product"
-               value="9"
+               value="10"
                data-component="body" hidden>
     <br>
 
@@ -742,7 +707,7 @@ fetch(url, {
                 <input type="number"
                name="category_id"
                data-endpoint="POSTapi-product"
-               value="5"
+               value="8"
                data-component="body" hidden>
     <br>
 
@@ -766,7 +731,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"product_id\": 5
+    \"product_id\": 14
 }"
 </code></pre></div>
 
@@ -782,7 +747,7 @@ const headers = {
 };
 
 let body = {
-    "product_id": 5
+    "product_id": 14
 };
 
 fetch(url, {
@@ -849,7 +814,7 @@ fetch(url, {
                 <input type="number"
                name="product_id"
                data-endpoint="DELETEapi-product"
-               value="5"
+               value="14"
                data-component="body" hidden>
     <br>
 
@@ -873,10 +838,10 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"id\": 2,
-    \"name\": \"magni\",
-    \"short_description\": \"id\",
-    \"long_description\": \"omnis\"
+    \"id\": 17,
+    \"name\": \"eveniet\",
+    \"short_description\": \"dolor\",
+    \"long_description\": \"vitae\"
 }"
 </code></pre></div>
 
@@ -892,10 +857,10 @@ const headers = {
 };
 
 let body = {
-    "id": 2,
-    "name": "magni",
-    "short_description": "id",
-    "long_description": "omnis"
+    "id": 17,
+    "name": "eveniet",
+    "short_description": "dolor",
+    "long_description": "vitae"
 };
 
 fetch(url, {
@@ -983,7 +948,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-product"
-               value="2"
+               value="17"
                data-component="body" hidden>
     <br>
 
@@ -993,7 +958,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="PUTapi-product"
-               value="magni"
+               value="eveniet"
                data-component="body" hidden>
     <br>
 
@@ -1003,7 +968,7 @@ fetch(url, {
                 <input type="text"
                name="short_description"
                data-endpoint="PUTapi-product"
-               value="id"
+               value="dolor"
                data-component="body" hidden>
     <br>
 
@@ -1013,12 +978,343 @@ fetch(url, {
                 <input type="text"
                name="long_description"
                data-endpoint="PUTapi-product"
-               value="omnis"
+               value="vitae"
                data-component="body" hidden>
     <br>
 
         </p>
         </form>
+
+            <h2 id="product-GETapi-product">list products</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-product">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://127.0.0.1:8000/api/product" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://127.0.0.1:8000/api/product"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-product">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;po zmianie&quot;,
+            &quot;short_desription&quot;: &quot;kr&oacute;tki opis&quot;,
+            &quot;long_desription&quot;: &quot;długi opis&quot;,
+            &quot;price&quot;: [
+                {
+                    &quot;netto&quot;: 433981,
+                    &quot;gross&quot;: 34718,
+                    &quot;tax&quot;: 8,
+                    &quot;description&quot;: &quot;White Rabbit, 'but it doesn't matter much,'.&quot;,
+                    &quot;condition&quot;: 1
+                }
+            ],
+            &quot;category&quot;: []
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;The Mouse only shook its head down, and was just going to happen next. The first witness was the.&quot;,
+            &quot;short_desription&quot;: &quot;Mabel, for I know all sorts of little animals and birds waiting outside. The poor little thing sat down again very sadly and quietly, and looked at it gloomily: then he dipped it into one of its mouth open, gazing up into the teapot. 'At any rate I'll.&quot;,
+            &quot;long_desription&quot;: &quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Ex nemo sint cupiditate et amet aliquam sapiente voluptas.&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;form action=\&quot;example.org\&quot; method=\&quot;POST\&quot;&gt;&lt;label for=\&quot;username\&quot;&gt;tenetur&lt;/label&gt;&lt;input type=\&quot;text\&quot; id=\&quot;username\&quot;&gt;&lt;label for=\&quot;password\&quot;&gt;quae&lt;/label&gt;&lt;input type=\&quot;password\&quot; id=\&quot;password\&quot;&gt;&lt;/form&gt;&lt;div class=\&quot;illum\&quot;&gt;&lt;/div&gt;&lt;div class=\&quot;repellendus\&quot;&gt;&lt;div id=\&quot;2273\&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;div id=\&quot;52832\&quot;&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;\n&quot;,
+            &quot;price&quot;: [
+                {
+                    &quot;netto&quot;: 100,
+                    &quot;gross&quot;: 4,
+                    &quot;tax&quot;: 4,
+                    &quot;description&quot;: &quot;I got up and said, very gravely, 'I think, you.&quot;,
+                    &quot;condition&quot;: 1
+                }
+            ],
+            &quot;category&quot;: []
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;I don't believe there's an atom of meaning in it, and on both sides at once. The Dormouse had.&quot;,
+            &quot;short_desription&quot;: &quot;Mock Turtle, and said 'No, never') '--so you can find out the Fish-Footman was gone, and the other players, and shouting 'Off with her head!' Those whom she sentenced were taken into custody by the White Rabbit. She was looking up into the wood. 'If it.&quot;,
+            &quot;long_desription&quot;: &quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Voluptas molestiae aut et voluptatem ea pariatur excepturi.&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;form action=\&quot;example.net\&quot; method=\&quot;POST\&quot;&gt;&lt;label for=\&quot;username\&quot;&gt;corporis&lt;/label&gt;&lt;input type=\&quot;text\&quot; id=\&quot;username\&quot;&gt;&lt;label for=\&quot;password\&quot;&gt;sequi&lt;/label&gt;&lt;input type=\&quot;password\&quot; id=\&quot;password\&quot;&gt;&lt;/form&gt;&lt;div class=\&quot;magni\&quot;&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;\n&quot;,
+            &quot;price&quot;: [
+                {
+                    &quot;netto&quot;: 100,
+                    &quot;gross&quot;: 120,
+                    &quot;tax&quot;: 20,
+                    &quot;description&quot;: &quot;Alice. 'I've tried every way, and then raised.&quot;,
+                    &quot;condition&quot;: 1
+                }
+            ],
+            &quot;category&quot;: []
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;name&quot;: &quot;Grief, they used to do:-- 'How doth the little--\&quot;' and she dropped it hastily, just in time to.&quot;,
+            &quot;short_desription&quot;: &quot;The Queen smiled and passed on. 'Who ARE you talking to?' said one of the Rabbit's voice; and the other paw, 'lives a March Hare. The Hatter shook his grey locks, 'I kept all my life!' Just as she could guess, she was to eat her up in spite of all this.&quot;,
+            &quot;long_desription&quot;: &quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Ad sit et harum voluptatem expedita porro.&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;form action=\&quot;example.org\&quot; method=\&quot;POST\&quot;&gt;&lt;label for=\&quot;username\&quot;&gt;ad&lt;/label&gt;&lt;input type=\&quot;text\&quot; id=\&quot;username\&quot;&gt;&lt;label for=\&quot;password\&quot;&gt;at&lt;/label&gt;&lt;input type=\&quot;password\&quot; id=\&quot;password\&quot;&gt;&lt;/form&gt;&lt;div class=\&quot;quam\&quot;&gt;&lt;/div&gt;&lt;div id=\&quot;48573\&quot;&gt;&lt;span&gt;Mollitia consequatur occaecati sit eum velit sed molestias velit natus.&lt;/span&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Odio voluptas.&lt;/th&gt;&lt;th&gt;Nisi quis consequatur veniam vel culpa.&lt;/th&gt;&lt;th&gt;Esse.&lt;/th&gt;&lt;th&gt;Similique aut.&lt;/th&gt;&lt;th&gt;Consectetur neque.&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Quo facere est sequi iste qui sit rerum suscipit dolorem et vero.&lt;/td&gt;&lt;td&gt;Officia corrupti voluptate doloribus harum sint cum alias iure eligendi.&lt;/td&gt;&lt;td&gt;Dolorem aliquid maiores sit alias pariatur.&lt;/td&gt;&lt;td&gt;Vel enim assumenda.&lt;/td&gt;&lt;td&gt;Blanditiis nihil nisi dolorem sed.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Unde dolor excepturi illum.&lt;/td&gt;&lt;td&gt;Iste fuga quia corporis ea sed non numquam pariatur eligendi.&lt;/td&gt;&lt;td&gt;Sint adipisci eos error accusantium molestias recusandae recusandae consequatur illo veritatis dignissimos eligendi voluptatem.&lt;/td&gt;&lt;td&gt;Et reprehenderit quia voluptas impedit facere soluta.&lt;/td&gt;&lt;td&gt;Dignissimos nam explicabo ex.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Eum temporibus ducimus nesciunt earum adipisci et beatae iure repellendus vero sit assumenda.&lt;/td&gt;&lt;td&gt;Officiis.&lt;/td&gt;&lt;td&gt;Sunt in veritatis laborum consequatur laudantium aut a ut perferendis eum ea.&lt;/td&gt;&lt;td&gt;Eos adipisci sapiente eveniet quia cupiditate.&lt;/td&gt;&lt;td&gt;Eligendi id aut dolor.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Vitae aut ipsa.&lt;/td&gt;&lt;td&gt;Voluptatem laudantium.&lt;/td&gt;&lt;td&gt;Voluptatem officiis laudantium magni commodi nisi a et.&lt;/td&gt;&lt;td&gt;Vel quo laborum et vero neque perferendis recusandae ut minima occaecati voluptas.&lt;/td&gt;&lt;td&gt;Consequuntur suscipit est totam dolore.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Culpa placeat quo.&lt;/td&gt;&lt;td&gt;Sapiente omnis ipsam magni aliquam incidunt.&lt;/td&gt;&lt;td&gt;Qui cumque praesentium velit.&lt;/td&gt;&lt;td&gt;Ab eaque sit nostrum consectetur.&lt;/td&gt;&lt;td&gt;Laborum facilis ipsa perspiciatis eaque et fugiat nisi.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Facere voluptatem assumenda cum.&lt;/td&gt;&lt;td&gt;Delectus voluptatem.&lt;/td&gt;&lt;td&gt;Commodi velit nisi voluptas ratione alias quisquam.&lt;/td&gt;&lt;td&gt;Assumenda nemo voluptatem sed dolor expedita expedita blanditiis quo.&lt;/td&gt;&lt;td&gt;Et inventore et consequatur quod laborum in optio aut.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Nesciunt eligendi incidunt sit accusantium tempore deleniti cupiditate aut voluptatem.&lt;/td&gt;&lt;td&gt;Similique ut consectetur aperiam id amet illum alias.&lt;/td&gt;&lt;td&gt;Maxime sequi odit aut nemo culpa.&lt;/td&gt;&lt;td&gt;Perferendis.&lt;/td&gt;&lt;td&gt;Praesentium alias accusamus aliquam ea.&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;div class=\&quot;illum\&quot;&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;\n&quot;,
+            &quot;price&quot;: [
+                {
+                    &quot;netto&quot;: 669182,
+                    &quot;gross&quot;: 769559,
+                    &quot;tax&quot;: 15,
+                    &quot;description&quot;: &quot;Duchess, the Duchess! Oh! won't she be savage if.&quot;,
+                    &quot;condition&quot;: 1
+                }
+            ],
+            &quot;category&quot;: []
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;He got behind him, and said to the Gryphon. 'They can't have anything to put down yet, before the.&quot;,
+            &quot;short_desription&quot;: &quot;Turtle.' These words were followed by a very grave voice, 'until all the time she found a little startled by seeing the Cheshire Cat, she was as much as she did so, and were resting in the back. However, it was in the sand with wooden spades, then a.&quot;,
+            &quot;long_desription&quot;: &quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Temporibus neque voluptatem et ut.&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;form action=\&quot;example.com\&quot; method=\&quot;POST\&quot;&gt;&lt;label for=\&quot;username\&quot;&gt;consequatur&lt;/label&gt;&lt;input type=\&quot;text\&quot; id=\&quot;username\&quot;&gt;&lt;label for=\&quot;password\&quot;&gt;commodi&lt;/label&gt;&lt;input type=\&quot;password\&quot; id=\&quot;password\&quot;&gt;&lt;/form&gt;&lt;div class=\&quot;sit\&quot;&gt;Ullam rerum facere natus omnis qui quis fuga iure exercitationem illo ex.&lt;/div&gt;&lt;div class=\&quot;labore\&quot;&gt;&lt;/div&gt;&lt;div id=\&quot;93509\&quot;&gt;&lt;p&gt;Et veritatis explicabo eligendi similique ex.&lt;/p&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Soluta vel saepe.&lt;/th&gt;&lt;th&gt;Rem.&lt;/th&gt;&lt;th&gt;Qui odit.&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Omnis molestias placeat odit.&lt;/td&gt;&lt;td&gt;Dolor.&lt;/td&gt;&lt;td&gt;Veniam dolorem perspiciatis quibusdam necessitatibus quia dolores voluptas enim libero explicabo.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;In officia dolor dignissimos.&lt;/td&gt;&lt;td&gt;Quas tempore voluptate eveniet in ad molestias est earum fuga nemo sit.&lt;/td&gt;&lt;td&gt;Nihil saepe dolor ab ut numquam quia eaque temporibus quia.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Quaerat aut voluptas provident sit in ipsum ratione aliquid.&lt;/td&gt;&lt;td&gt;Omnis est est et aut maxime.&lt;/td&gt;&lt;td&gt;Saepe saepe quam et amet rerum est consequatur.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Accusantium omnis enim voluptas unde.&lt;/td&gt;&lt;td&gt;Assumenda est et et ut nesciunt distinctio quos tempora.&lt;/td&gt;&lt;td&gt;Ut consectetur voluptas nesciunt ipsam inventore rerum in in aut vel omnis.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Odit vel aspernatur ut reiciendis facere eligendi numquam voluptatibus officia et dolor officia autem.&lt;/td&gt;&lt;td&gt;Distinctio vero rem sit sequi labore accusamus.&lt;/td&gt;&lt;td&gt;Necessitatibus atque dignissimos quia nulla neque earum debitis aut accusantium.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Ut velit nesciunt aut nam voluptatem repellat.&lt;/td&gt;&lt;td&gt;Quae aliquid dicta.&lt;/td&gt;&lt;td&gt;Adipisci totam aut voluptatem eius voluptas in commodi perferendis et voluptatum.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Ut qui ut facere aperiam.&lt;/td&gt;&lt;td&gt;Qui velit dolorum rerum qui.&lt;/td&gt;&lt;td&gt;Dolores sit nobis pariatur explicabo vero.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Assumenda quibusdam sed quibusdam et harum perspiciatis porro quam sit cupiditate placeat.&lt;/td&gt;&lt;td&gt;At labore eos dolores earum.&lt;/td&gt;&lt;td&gt;Beatae eius laboriosam molestias consequatur est necessitatibus architecto blanditiis possimus dolorum repellat eveniet iure.&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;\n&quot;,
+            &quot;price&quot;: [
+                {
+                    &quot;netto&quot;: 476254,
+                    &quot;gross&quot;: 533404,
+                    &quot;tax&quot;: 12,
+                    &quot;description&quot;: &quot;March Hare interrupted, yawning. 'I'm getting.&quot;,
+                    &quot;condition&quot;: 1
+                }
+            ],
+            &quot;category&quot;: []
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;name&quot;: &quot;White Rabbit, jumping up in a trembling voice, 'Let us get to twenty at that rate! However, the.&quot;,
+            &quot;short_desription&quot;: &quot;King, who had meanwhile been examining the roses. 'Off with their hands and feet, to make herself useful, and looking at it again: but he would deny it too: but the Hatter said, turning to the table, but there was no longer to be ashamed of yourself,'.&quot;,
+            &quot;long_desription&quot;: &quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Maiores deleniti est est nostrum.&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;form action=\&quot;example.com\&quot; method=\&quot;POST\&quot;&gt;&lt;label for=\&quot;username\&quot;&gt;dolores&lt;/label&gt;&lt;input type=\&quot;text\&quot; id=\&quot;username\&quot;&gt;&lt;label for=\&quot;password\&quot;&gt;illum&lt;/label&gt;&lt;input type=\&quot;password\&quot; id=\&quot;password\&quot;&gt;&lt;/form&gt;&lt;div class=\&quot;labore\&quot;&gt;&lt;span&gt;Enim expedita repellat qui sequi delectus illo vel fugiat sequi.&lt;/span&gt;&lt;h3&gt;Aperiam consequuntur dicta cupiditate ad.&lt;/h3&gt;Quo aut occaecati consequuntur aliquam cumque beatae saepe et sint in atque omnis.&lt;span&gt;Velit pariatur ad.&lt;/span&gt;&lt;/div&gt;&lt;div class=\&quot;delectus\&quot;&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;\n&quot;,
+            &quot;price&quot;: [
+                {
+                    &quot;netto&quot;: 992199,
+                    &quot;gross&quot;: 1012043,
+                    &quot;tax&quot;: 2,
+                    &quot;description&quot;: &quot;I've had such a nice little histories about.&quot;,
+                    &quot;condition&quot;: 1
+                }
+            ],
+            &quot;category&quot;: []
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;name&quot;: &quot;Alice asked in a hurried nervous manner, smiling at everything that was trickling down his brush.&quot;,
+            &quot;short_desription&quot;: &quot;Said his father; 'don't give yourself airs! Do you think you're changed, do you?' 'I'm afraid I can't be civil, you'd better ask HER about it.' (The jury all brightened up at the March Hare. 'It was a different person then.' 'Explain all that,' he said.&quot;,
+            &quot;long_desription&quot;: &quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Ipsum quod rerum officia saepe nobis voluptas maxime distinctio voluptas fugit natus.&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;form action=\&quot;example.org\&quot; method=\&quot;POST\&quot;&gt;&lt;label for=\&quot;username\&quot;&gt;harum&lt;/label&gt;&lt;input type=\&quot;text\&quot; id=\&quot;username\&quot;&gt;&lt;label for=\&quot;password\&quot;&gt;quia&lt;/label&gt;&lt;input type=\&quot;password\&quot; id=\&quot;password\&quot;&gt;&lt;/form&gt;&lt;div id=\&quot;67613\&quot;&gt;&lt;div id=\&quot;72943\&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;div id=\&quot;48964\&quot;&gt;&lt;span&gt;Dolor rerum accusantium nihil distinctio nesciunt quibusdam dolore sint.&lt;/span&gt;&lt;span&gt;Porro ipsa vel enim ab ratione quia eum est.&lt;/span&gt;Dolor fugit.&lt;ul&gt;&lt;li&gt;Iusto.&lt;/li&gt;&lt;li&gt;Dolorem aliquam quo.&lt;/li&gt;&lt;li&gt;Nostrum.&lt;/li&gt;&lt;li&gt;Ut natus eum.&lt;/li&gt;&lt;li&gt;Dolores amet tempore aperiam suscipit.&lt;/li&gt;&lt;li&gt;Quam odit ducimus.&lt;/li&gt;&lt;li&gt;Voluptatem aliquam.&lt;/li&gt;&lt;li&gt;Quasi possimus laboriosam reiciendis.&lt;/li&gt;&lt;li&gt;Sit.&lt;/li&gt;&lt;li&gt;Soluta provident consequatur.&lt;/li&gt;&lt;li&gt;Sapiente officiis recusandae.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;\n&quot;,
+            &quot;price&quot;: [],
+            &quot;category&quot;: []
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;name&quot;: &quot;I THINK; or is it twelve? I--' 'Oh, don't bother ME,' said Alice hastily; 'but I'm not particular.&quot;,
+            &quot;short_desription&quot;: &quot;Alice, quite forgetting in the sky. Alice went timidly up to her ear. 'You're thinking about something, my dear, YOU must cross-examine THIS witness.' 'Well, if I chose,' the Duchess was VERY ugly; and secondly, because she was not even get her head to.&quot;,
+            &quot;long_desription&quot;: &quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Voluptatem sint accusamus ut.&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;form action=\&quot;example.org\&quot; method=\&quot;POST\&quot;&gt;&lt;label for=\&quot;username\&quot;&gt;et&lt;/label&gt;&lt;input type=\&quot;text\&quot; id=\&quot;username\&quot;&gt;&lt;label for=\&quot;password\&quot;&gt;nobis&lt;/label&gt;&lt;input type=\&quot;password\&quot; id=\&quot;password\&quot;&gt;&lt;/form&gt;&lt;div id=\&quot;78401\&quot;&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;\n&quot;,
+            &quot;price&quot;: [],
+            &quot;category&quot;: []
+        },
+        {
+            &quot;id&quot;: 11,
+            &quot;name&quot;: &quot;Laptop&quot;,
+            &quot;short_desription&quot;: &quot;kr&oacute;tki opis&quot;,
+            &quot;long_desription&quot;: &quot;długi opis&quot;,
+            &quot;price&quot;: [
+                {
+                    &quot;netto&quot;: 1290,
+                    &quot;gross&quot;: 1587,
+                    &quot;tax&quot;: 23,
+                    &quot;description&quot;: null,
+                    &quot;condition&quot;: 1
+                }
+            ],
+            &quot;category&quot;: [
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Lobster; I heard him declare, \&quot;You have baked me.&quot;,
+                    &quot;available&quot;: 1
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 12,
+            &quot;name&quot;: &quot;Laptop&quot;,
+            &quot;short_desription&quot;: &quot;kr&oacute;tki opis&quot;,
+            &quot;long_desription&quot;: &quot;długi opis&quot;,
+            &quot;price&quot;: [
+                {
+                    &quot;netto&quot;: 1290,
+                    &quot;gross&quot;: 1587,
+                    &quot;tax&quot;: 23,
+                    &quot;description&quot;: null,
+                    &quot;condition&quot;: 1
+                }
+            ],
+            &quot;category&quot;: [
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Lobster; I heard him declare, \&quot;You have baked me.&quot;,
+                    &quot;available&quot;: 1
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 13,
+            &quot;name&quot;: &quot;Laptop&quot;,
+            &quot;short_desription&quot;: &quot;kr&oacute;tki opis&quot;,
+            &quot;long_desription&quot;: &quot;długi opis&quot;,
+            &quot;price&quot;: [
+                {
+                    &quot;netto&quot;: 1290,
+                    &quot;gross&quot;: 1587,
+                    &quot;tax&quot;: 23,
+                    &quot;description&quot;: null,
+                    &quot;condition&quot;: 1
+                }
+            ],
+            &quot;category&quot;: [
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Lobster; I heard him declare, \&quot;You have baked me.&quot;,
+                    &quot;available&quot;: 1
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 14,
+            &quot;name&quot;: &quot;Laptop&quot;,
+            &quot;short_desription&quot;: &quot;kr&oacute;tki opis&quot;,
+            &quot;long_desription&quot;: &quot;długi opis&quot;,
+            &quot;price&quot;: [
+                {
+                    &quot;netto&quot;: 1290,
+                    &quot;gross&quot;: 1587,
+                    &quot;tax&quot;: 23,
+                    &quot;description&quot;: null,
+                    &quot;condition&quot;: 1
+                }
+            ],
+            &quot;category&quot;: [
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Lobster; I heard him declare, \&quot;You have baked me.&quot;,
+                    &quot;available&quot;: 1
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 15,
+            &quot;name&quot;: &quot;Laptop&quot;,
+            &quot;short_desription&quot;: &quot;kr&oacute;tki opis&quot;,
+            &quot;long_desription&quot;: &quot;długi opis&quot;,
+            &quot;price&quot;: [
+                {
+                    &quot;netto&quot;: 1290,
+                    &quot;gross&quot;: 1587,
+                    &quot;tax&quot;: 23,
+                    &quot;description&quot;: null,
+                    &quot;condition&quot;: 1
+                }
+            ],
+            &quot;category&quot;: [
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Lobster; I heard him declare, \&quot;You have baked me.&quot;,
+                    &quot;available&quot;: 1
+                }
+            ]
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-product" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-product"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-product"></code></pre>
+</span>
+<span id="execution-error-GETapi-product" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-product"></code></pre>
+</span>
+<form id="form-GETapi-product" data-method="GET"
+      data-path="api/product"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-product', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-product"
+                    onclick="tryItOut('GETapi-product');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-product"
+                    onclick="cancelTryOut('GETapi-product');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-product" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/product</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>orderDesc</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="orderDesc"
+               data-endpoint="GETapi-product"
+               value="omnis"
+               data-component="url" hidden>
+    <br>
+<p>order by col name</p>
+            </p>
+                    <p>
+                <b><code>orderAsc</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="orderAsc"
+               data-endpoint="GETapi-product"
+               value="et"
+               data-component="url" hidden>
+    <br>
+<p>order by col name</p>
+            </p>
+                    </form>
 
     
 

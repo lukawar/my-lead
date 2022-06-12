@@ -41,4 +41,18 @@ class ProductService
             return new ProductResource($product);
         } else return response()->json(['message' => 'no product'], 404);
     }
+
+    public function index($request)
+    {
+        $products = Product::with(['price']);
+
+        //simple order ...
+        if(isset($request->orderDesc))
+            $products->orderBy($request->orderDesc, 'DESC');
+
+        if(isset($request->orderAsc))
+            $products->orderBy($request->orderAsc, 'ASC');
+
+        return $products;
+    }
 }
